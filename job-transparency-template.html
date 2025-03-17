@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearPath - Bringing Transparency to Your Job Search</title>
+    <meta name="description" content="ClearPath provides transparency in the hiring process with real-time application tracking, personalized recommendations, and a supportive community.">
+    <style>
+        :root {
+            --primary-blue: #2c6ecf;
+            --light-blue: #e6f0ff;
+            --dark-blue: #1a4b8c;
+            --grey: #6c757d;
+            --light-grey: #f8f9fa;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--grey);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .auth-buttons {
+            display: flex;
+        }
+        
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .btn-outline {
+            border: 1px solid var(--primary-blue);
+            color: var(--primary-blue);
+            background: transparent;
+            margin-right: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--light-blue);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .hero {
+            background-color: var(--light-blue);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--grey);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .search-bar {
+            display: flex;
+            max-width: 700px;
+            margin: 2rem auto;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            outline: none;
+        }
+        
+        .search-bar .btn {
+            border-radius: 0;
+        }
+        
+        .features {
+            padding: 4rem 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--dark-blue);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--light-grey);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+        
+        .dashboard-preview {
+            padding: 4rem 0;
+            background-color: var(--light-grey);
+        }
+        
+        .dashboard-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .dashboard-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .dashboard-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .dashboard-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .cta {
+            padding: 4rem 0;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta .btn {
+            background-color: var(--white);
+            color: var(--primary-blue);
+        }
+        
+        .cta .btn:hover {
+            background-color: var(--light-blue);
+        }
+        
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 3rem 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column a {
+            color: var(--light-grey);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .auth-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-outline {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .search-bar {
+                flex-direction: column;
+            }
+            
+            .search-bar input {
+                width: 100%;
+            }
+            
+            .dashboard-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">ClearPath</a>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#support">Support</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="#" class="btn btn-outline">Log In</a>
+                    <a href="#" class="btn btn-primary">Sign Up</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Bringing Transparency to Your Job Search</h1>
+            <p>Track your applications in real-time, understand where you stand in the hiring process, and make informed career decisions.</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for jobs, companies, or skills">
+                <button class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose ClearPath</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Application Tracker</h3>
+                    <p>See the real-time status of all your job applications in one place with our intuitive timeline view.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Referral Network</h3>
+                    <p>Connect with professionals who can provide referrals to your dream companies.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Career Resources</h3>
+                    <p>Access interview tips, resume templates, and industry insights to boost your job search.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>24/7 Support</h3>
+                    <p>Get help whenever you need it with our dedicated support team and comprehensive FAQs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Preview -->
+    <section class="dashboard-preview" id="dashboard">
+        <div class="container">
+            <h2 class="section-title">Your Personalized Dashboard</h2>
+            <div class="dashboard-container">
+                <div class="dashboard-text">
+                    <h3>Everything You Need in One Place</h3>
+                    <p>Our dashboard provides a comprehensive view of your job search journey. Track applications, receive AI-powered job recommendations, and build your professional profile.</p>
+                    <ul>
+                        <li>Real-time application status updates</li>
+                        <li>AI-powered job recommendations</li>
+                        <li>Professional resume builder</li>
+                        <li>Interview scheduling and reminders</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Try Demo</a>
+                </div>
+                <div class="dashboard-image">
+                    <img src="/api/placeholder/600/400" alt="Dashboard Preview">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Tracker -->
+    <section class="features" id="app-tracker">
+        <div class="container">
+            <h2 class="section-title">Application Tracker</h2>
+            <div class="dashboard-container">
+                <div class="dashboard-image">
+                    <img src="/api/placeholder/600/400" alt="Application Tracker">
+                </div>
+                <div class="dashboard-text">
+                    <h3>Know Where You Stand</h3>
+                    <p>Our timeline view gives you complete visibility into your job application progress:</p>
+                    <ul>
+                        <li>Applied: Track when your application was submitted</li>
+                        <li>Under Review: See when recruiters are considering your profile</li>
+                        <li>Interview Scheduled: Manage your upcoming interviews</li>
+                        <li>Offer: Track and compare job offers</li>
+                    </ul>
+                    <p>No more waiting in the dark - get notifications at every stage of the process.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Referral Network -->
+    <section class="dashboard-preview" id="referral">
+        <div class="container">
+            <h2 class="section-title">Referral Network</h2>
+            <div class="dashboard-container">
+                <div class="dashboard-text">
+                    <h3>Leverage Your Professional Connections</h3>
+                    <p>Referrals increase your chances of getting hired by up to 15x. With our referral network, you can:</p>
+                    <ul>
+                        <li>Find connections at your target companies</li>
+                        <li>Request referrals with custom templates</li>
+                        <li>Track the status of your referral requests</li>
+                        <li>Build your professional network</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Explore Network</a>
+                </div>
+                <div class="dashboard-image">
+                    <img src="/api/placeholder/600/400" alt="Referral Network">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Resources -->
+    <section class="features" id="resources">
+        <div class="container">
+            <h2 class="section-title">Career Resources</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Resume Builder</h3>
+                    <p>Create an ATS-friendly resume with our professional templates and customization tools.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Interview Guides</h3>
+                    <p>Prepare for your interviews with our comprehensive guides and practice questions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Salary Insights</h
